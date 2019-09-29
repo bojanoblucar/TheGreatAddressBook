@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AddressBook.Model\AddressBook.Model.csproj" />
+    <ProjectReference Include="..\AddressBook.Shared\AddressBook.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
