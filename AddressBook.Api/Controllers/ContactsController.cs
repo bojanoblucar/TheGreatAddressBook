@@ -22,13 +22,13 @@ namespace AddressBook.Api.Controllers
 
         private readonly IAddressBookService addressBookService;
 
-        private readonly IHubContext<ContactsHub> hub;
+        private readonly IAddressBookBroadcaster addressBookBroadcaster;
 
-        public ContactsController(AddressBookDbContext addressBookDbContext, IAddressBookService addressBookService, IHubContext<ContactsHub> hub)
+        public ContactsController(AddressBookDbContext addressBookDbContext, IAddressBookService addressBookService, IAddressBookBroadcaster addressBookBroadcaster)
         {
             this.addressBookDbContext = addressBookDbContext;
             this.addressBookService = addressBookService;
-            this.hub = hub;
+            this.addressBookBroadcaster = addressBookBroadcaster;
         }
 
 
@@ -55,7 +55,7 @@ namespace AddressBook.Api.Controllers
 
         // POST: api/Contacts
         [HttpPost]
-        public void Post([FromBody] Contact contact)
+        public async Task Post([FromBody] Contact contact)
         {
             //using filter to validate model state
 
@@ -63,7 +63,7 @@ namespace AddressBook.Api.Controllers
 
             addressBookDbContext.SaveChanges();
 
-            BroadcastMessage();
+            await addressBookBroadcaster.BroadcastContactsChanged(contact);
         }
 
         // PUT: api/Contacts
@@ -89,11 +89,6 @@ namespace AddressBook.Api.Controllers
             addressBookService.DeleteContact(id);
 
             addressBookDbContext.SaveChanges();
-        }
-
-        private void BroadcastMessage()
-        {
-            hub.Clients.All.SendAsync("SendMessage");
         }
     }
 }
