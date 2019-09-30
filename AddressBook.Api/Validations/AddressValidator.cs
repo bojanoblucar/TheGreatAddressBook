@@ -12,6 +12,7 @@ namespace AddressBook.Api.Validations
         public AddressValidator()
         {
             RuleFor(a => a.StreetName).NotEmpty();
+            RuleFor(a => a.StreetNumber).NotEmpty();
             RuleFor(a => a.City).NotEmpty();
             RuleFor(a => a.StateId).GreaterThan(0);
         }
