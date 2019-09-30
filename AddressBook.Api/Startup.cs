@@ -58,7 +58,7 @@ namespace AddressBook.Api
             services.AddScoped<IPhoneNumbersDataAccess, PhoneNumbersDataAccess>();
             services.AddScoped<IAddressBookService, AddressBookService>();
 
-            services.AddScoped<IAddressBookBroadcaster, AddressBookBroadcaster>();
+            services.AddScoped<AddressBookBroadcaster>();
 
             services.AddSignalR();
         }

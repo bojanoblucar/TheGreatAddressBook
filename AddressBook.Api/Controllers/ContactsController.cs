@@ -22,9 +22,9 @@ namespace AddressBook.Api.Controllers
 
         private readonly IAddressBookService addressBookService;
 
-        private readonly IAddressBookBroadcaster addressBookBroadcaster;
+        private readonly AddressBookBroadcaster addressBookBroadcaster;
 
-        public ContactsController(AddressBookDbContext addressBookDbContext, IAddressBookService addressBookService, IAddressBookBroadcaster addressBookBroadcaster)
+        public ContactsController(AddressBookDbContext addressBookDbContext, IAddressBookService addressBookService, AddressBookBroadcaster addressBookBroadcaster)
         {
             this.addressBookDbContext = addressBookDbContext;
             this.addressBookService = addressBookService;

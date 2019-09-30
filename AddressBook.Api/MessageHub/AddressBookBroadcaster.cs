@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AddressBook.Api.MessageHub
 {
-    public class AddressBookBroadcaster : IAddressBookBroadcaster
+    public class AddressBookBroadcaster
     {
         private IHubContext<ContactsHub> hub;
 
