@@ -125,7 +125,7 @@ namespace AddressBook.Tests.IntegrationTest
         {
             return new Contact()
             {
-                Name = "Test",
+                Name = "Test nakon svega",
                 DateOfBirth = DateTime.Today.AddDays(-1),
                 Address = new Address
                 {
